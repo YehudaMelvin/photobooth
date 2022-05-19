@@ -1,0 +1,33 @@
+.header_logo_container {
+    margin: 5vh 2.5vw 0 0;
+    z-index: 20;
+    position: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.thanks_container {
+    max-width: 30vw;
+    margin: 30vh 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 20vh;
+
+    .thanks_text {
+        display: flex;
+        flex-direction: column;
+        row-gap: 3vh;
+        align-items: center;
+        justify-content: center;
+
+        .thanks_title {
+            max-width: 20vw;
+        }
+
+        .thanks_msg {
+            max-width: 40vw;
+        }
+    }
+}

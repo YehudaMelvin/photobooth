@@ -1,0 +1,36 @@
+.start_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    height: 100vh;
+
+    background-image: url(../assets/image/backgroundstart.png);
+    background-position: flex;
+    background-size: auto;
+    background-repeat: no-repeat;
+
+
+    .brands_container {
+        max-width: 30vw;
+        margin: 25vh 15vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        row-gap: 20vh;
+
+        .brands_button {
+            a {
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+
+            image {
+                max-width: 40vw;
+            }
+        }
+    }
+}

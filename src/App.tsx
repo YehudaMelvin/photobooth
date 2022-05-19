@@ -1,25 +1,24 @@
 import React from 'react';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import logo from './logo.svg';
 import './App.css';
 
+import StartComponent from './start/start.component';
+import SessionComponent from './session/photo.component';
+import ThanksComponent from './thanks/thanks.component';
+
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<StartComponent/>}></Route>
+          <Route path='/session' element={<SessionComponent/>}></Route>
+          <Route path='/thanks' element={<ThanksComponent/>}></Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
