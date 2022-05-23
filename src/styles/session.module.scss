@@ -37,20 +37,29 @@
     flex-direction: column;
     padding: 5vh 2.5vw;
     row-gap: 2.5vh;
-
+    
+    
     label {
-        font-size: x-large;
+        font-size: xx-large;
+        font-style: bold;
+        justify-items: center;
+        margin-left: 17cm;
     }
 
     .carousel {
         height: 65vh;
+        width: 90vw;
+        margin-left: 1cm;
+
 
         div:first-of-type {
+
             height: 100%;
         }
 
         ul {
             column-gap: 5vw;
+            
         }
     }
 
@@ -98,10 +107,12 @@
     .selected_background_container {
         height: 100vh;
         width: 100vw;
+        
 
         img {
             height: 100vh;
             width: 100vw;
+            
         }
     }
 
@@ -126,9 +137,10 @@
     row-gap: 2.5vh;
 
     label {
-        font-size: x-large;
+        font-size: xx-large;
+        font-style: bold;
         justify-content: center;
-        z-index: 100;
+        margin-left: 18cm;
     }
 
     .pick_photo {
@@ -146,12 +158,13 @@
     }
 
 }
+
 .canvas_container {
     display: flex;
     justify-content: center;
     height: 80vh;
-    width: 90vw;
 }
+
 // final step
 .final_step_container {
     display: flex;
@@ -161,8 +174,34 @@
     row-gap: 2.5vh;
 
     label {
-        font-size: x-large;
+        font-size: xx-large;
+        font-style: bold;
+        justify-items: center;
+        margin-left: 16.2cm;
     }
+
+        .input {
+            display: flex;
+            justify-content: center;
+            margin-top: 1cm;
+            height: 4rem;
+            font-style: italic;
+            font-size: medium;
+            size: 20cm;
+
+            input {
+                    width: 40vw;
+                    height: 4rem;
+                    border: none;
+                    text-align: center;
+                    font-size: 1.5rem;
+                    padding: 1vh 0;
+                }
+            
+                input::placeholder {
+                    font-style: italic;
+                }
+        }
 
     .keyboard_group {
         height: 125%;
@@ -185,8 +224,8 @@
                 justify-content: center;
 
                 input {
-                    width: 100%;
-                    height: 2rem;
+                    width: 100vw;
+                    height: 4rem;
                     border: none;
                     text-align: center;
                     font-size: 1.5rem;
@@ -205,7 +244,6 @@
 
 //navigation bar
 .navigation_container {
-    height: 100%;
     width: 100vw;
     display: flex;
 
@@ -241,6 +279,7 @@
     display: flex;
     flex-direction: column;
     row-gap: 5px;
+    margin-top: 0.5cm;
     align-items: center;
     justify-content: center;
 

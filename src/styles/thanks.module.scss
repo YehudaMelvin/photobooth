@@ -7,13 +7,22 @@
 }
 
 .thanks_container {
-    max-width: 30vw;
-    margin: 30vh 40vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 100vh;
+    
+    background-image: url(../assets/image/bgwhitepolos.png);
+    background-position: flex;
+    background-size: max;
+    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     row-gap: 20vh;
+    
 
     .thanks_text {
         display: flex;

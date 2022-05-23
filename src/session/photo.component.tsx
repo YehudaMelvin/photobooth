@@ -11,12 +11,14 @@ import {MdChevronLeft, MdChevronRight} from 'react-icons/md'
 import {Carousel} from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
+import bgstar from "../assets/image/star.png"
 import bgwhitepolos from "../assets/image/bgwhitepolos.png";
 import bgproductspolos from "../assets/image/bgproductspolos.png";
 import bgbaru from "../assets/image/bgbaru.png"
  
 
 import IdleTimer from 'react-idle-timer'
+import { keyboard } from "@testing-library/user-event/dist/keyboard";
 
 
 interface IProp {}
@@ -73,7 +75,7 @@ interface IProp {}
 
         steps: 1,
         // steps: 4,
-        background: bgwhitepolos,
+        background: bgbaru,
 
         seconds: 3,
         photoNumber: 0,
@@ -96,13 +98,15 @@ interface IProp {}
 
       this.formRef = React.createRef<HTMLFormElement>();
 
-      this.bgChoicesPolos = [bgwhitepolos, bgproductspolos, bgbaru];
+      this.bgChoicesPolos = [bgbaru, bgstar];
     }
 
+    //email
     componentDidMount() {
       emailjs.init("oE5mnt-IvEJlg0wCc");
     }
 
+    //muncul camera
     private chromaKey() {
       const video = document.querySelector("#video") as HTMLVideoElement;
       const canvas: HTMLCanvasElement | null = document.querySelector("#canvas");
@@ -139,6 +143,8 @@ interface IProp {}
       window.location.assign("/");
     }
 
+
+    //function tambahan
     private async goLeft() {
       const leftStep: number = this.state.steps - 1;
       await this.setState({ steps: leftStep });
@@ -181,11 +187,15 @@ interface IProp {}
 
       if (step === 3) {
         await this.state.webcamPhotos.forEach((data, index) => {
+          setTimeout(() => {
           this.mountCanvas(data, index);
+          }, 1000);
         });
       }
     }
 
+
+    //function utama
     private selectBackground(index: number) {
       this.setState({ background: this.bgChoicesPolos[index] });
     }
@@ -247,7 +257,7 @@ interface IProp {}
 
     private startTimer() {
       this.setState({ flash: false, startPictureTaking: true });
-      if (this.state.photoNumber < 3 && this.state.seconds > 0) {
+      if (this.state.seconds > 0) {
         setTimeout(() => {
           this.setState({ seconds: this.state.seconds - 1 });
           if (this.state.seconds > 0) {
@@ -260,31 +270,29 @@ interface IProp {}
     }
 
     private getWebcam() {
-      const cameraPhoto = this.canvasWebcamRef.current?.toDataURL();
-      const webcams = this.state.webcamPhotos;
-      webcams[this.state.photoNumber] = cameraPhoto as string;
-
-      this.setState({ flash: false, startPictureTaking: true });
-
-      this.setState({
-        webcamPhotos: webcams,
-        photoNumber: this.state.photoNumber + 1,
-        // seconds: 3,
-        flash: true,
-      });
-
-      this.goRight();
-
-     if (this.state.photoNumber < 1) {
-      setTimeout(() => {
-        this.setState({ flash: false });
-      }, 1000);
-    } else {
-      
-    }
+    const cameraPhoto = this.canvasWebcamRef.current?.toDataURL();
+    const webcams = this.state.webcamPhotos;
+    webcams[this.state.photoNumber] = cameraPhoto as string;
+    this.setState({ flash: false, startPictureTaking: true });
+    this.setState({
+      webcamPhotos: webcams,
+      photoNumber: this.state.photoNumber + 1,
+      // seconds: 3,
+      flash: true,
+    });
+    // if (this.state.photoNumber < 1) {
+    //   setTimeout(() => {
+    //     this.setState({ flash: true });
+    //   }, 1000);
+    //   setTimeout(() => {
+    //     this.setState({ seconds: 3 });
+    //     this.startTimer();
+    //   }, 3000);
+    // }
+    this.goRight();
   }
 
- 
+ //canvas
       private async mountCanvas(data: string, index: number) {
       const cameraImg = new window.Image();
       cameraImg.src = data;
@@ -298,8 +306,9 @@ interface IProp {}
       const background = this.state.background;
       const canvasBg = new window.Image();
       canvasBg.onload = function () {
-        resizedContext?.drawImage(canvasBg, 0, 0, 1920, 1080);
-        resizedContext?.drawImage(cameraImg, 500, 200, 920, 720);
+        resizedContext?.drawImage(canvasBg, 400, 60, 1080, 980)
+        resizedContext?.drawImage(cameraImg, 685, 240, 520, 620);
+        console.log('draw')
       };
       canvasBg.src = background;
 
@@ -309,7 +318,7 @@ interface IProp {}
         if (divRef.current?.hasChildNodes()) {
           divRef.current?.removeChild(divRef.current.children[0]);
         }
-        console.log(divRef, "append");
+        console.log(divRef, canvasBg, "append");
         divRef.current?.appendChild(resizedCanvas);
       }
 
@@ -326,7 +335,7 @@ interface IProp {}
      
     }
 
-    
+    //email
     private sendEmail() {
       this.setState({ disableLeft: true, disableRight: true });
 
@@ -378,6 +387,8 @@ interface IProp {}
       this.goRight();
     }
   */}
+
+  //tampilan
 render(): React.ReactNode {
     const backgroundCarouselContents: JSX.Element[] = [];
 
@@ -433,10 +444,21 @@ render(): React.ReactNode {
           <>
             <div className={`flash ${this.state.flash}`} />
 
+            {!this.state.flash &&
+            this.state.startPictureTaking &&
+            this.state.seconds > 0 &&
+            this.state.seconds <= 3 ? (
+              <div className={Style.timer_container}>
+                <label>{this.state.seconds}</label>
+              </div>
+            ) : (
+              <></>
+            )}
+
             {!this.state.startPictureTaking ? (
               <div
                 className={Style.floating_button}
-                onClick={this.getWebcam.bind(this)}
+                onClick={this.startTimer.bind(this)}
               >
                 <img alt="take pic" src={takepic} />
               </div>
@@ -466,16 +488,16 @@ render(): React.ReactNode {
         ) : this.state.steps === 3 ? (
           <>
           <div className={Style.picture_selections}>
-              <div className={Style.step_title}>
-                <label>CHECK YOUR PICTURE</label>
-              </div>
-              <div ref={this.photoCarouselRef} className={Style.pick_photo}>
-                  <div
-                    ref={this.canvasDiv1Ref}
-                    className={Style.canvas_container}
-                  />
-              </div>
+            <div className={Style.step_title}>
+              <label>CHECK YOUR PICTURE</label>
             </div>
+            <div ref={this.canvasDiv1Ref} className={Style.canvas_container}>
+              {/* <div
+                ref={this.canvasDiv1Ref}
+                className={Style.canvas_container}
+                /> */}
+           </div>
+          </div>
 
             <div className={Style.navigation_container}>
               <div className={Style.navigation_buttons}>
@@ -500,9 +522,9 @@ render(): React.ReactNode {
               <div className={Style.step_title}>
                 <label>WRITE YOUR EMAIL ON THE FORM</label>
               </div>
-              <div className={Style.keyboard_group}>
                   <form ref={this.formRef}>
-                    <input
+                    <div className={Style.input}>
+                      <input
                       placeholder="enter your email"
                       readOnly
                       type="text"
@@ -510,6 +532,7 @@ render(): React.ReactNode {
                       id="to_email"
                       value={this.state.emailInput}
                     />
+                    </div>
                   </form>
                   <div className={Style.new_keyboard}>
                     {this.state.customKeyboardLayout.map((data, index) => {
@@ -535,7 +558,6 @@ render(): React.ReactNode {
                       );
                     })}
                 </div>
-              </div>
             </div>
             <div className={Style.navigation_container}>
               <div className={Style.navigation_buttons}>

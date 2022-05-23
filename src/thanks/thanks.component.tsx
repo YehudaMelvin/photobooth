@@ -2,6 +2,7 @@ import React from "react";
 import Style from "../styles/thanks.module.scss";
 
 import thanksMas from "../assets/image/thanks/thanksmsg.png";
+import thanksTtl from "../assets/image/thanks/thanks.png"
 import { Navigate } from "react-router-dom";
 
 interface IProp {}
@@ -27,6 +28,11 @@ export default class ThanksComponent extends React.Component<IProp> {
                         alt="thanks message"
                         src={thanksMas}
                         className={Style.thanks_msg}
+                    />
+                    <img
+                    alt="thanks tittle"
+                    src={thanksTtl}
+                    className={Style.thanks_text}
                     />
                 </div>
             </div>
