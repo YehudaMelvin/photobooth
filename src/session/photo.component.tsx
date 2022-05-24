@@ -13,8 +13,8 @@ import {Carousel} from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import bgstar from "../assets/image/star.png"
-import bgwhitepolos from "../assets/image/bgwhitepolos.png";
-import bgproductspolos from "../assets/image/bgproductspolos.png";
+//import bgwhitepolos from "../assets/image/bgwhitepolos.png";
+//import bgproductspolos from "../assets/image/bgproductspolos.png";
 import bgbaru from "../assets/image/bgbaru.png"
 import bgnew from "../assets/image/bgnew.png"
 import bgdark from "../assets/image/dark.png"
@@ -54,8 +54,8 @@ interface IProp {}
     private readonly photoCarouselRef: React.RefObject<HTMLDivElement>;
 
     private readonly canvasDiv1Ref: React.RefObject<HTMLDivElement>;
-    private readonly canvasDiv2Ref: React.RefObject<HTMLDivElement>;
-    private readonly canvasDiv3Ref: React.RefObject<HTMLDivElement>;
+    //private readonly canvasDiv2Ref: React.RefObject<HTMLDivElement>;
+    //private readonly canvasDiv3Ref: React.RefObject<HTMLDivElement>;
 
     private readonly formRef: React.RefObject<HTMLFormElement>;
 
@@ -96,8 +96,8 @@ interface IProp {}
       this.photoCarouselRef = React.createRef<HTMLDivElement>();
 
       this.canvasDiv1Ref = React.createRef<HTMLDivElement>();
-      this.canvasDiv2Ref = React.createRef<HTMLDivElement>();
-      this.canvasDiv3Ref = React.createRef<HTMLDivElement>();
+      //this.canvasDiv2Ref = React.createRef<HTMLDivElement>();
+      //this.canvasDiv3Ref = React.createRef<HTMLDivElement>();
 
       this.formRef = React.createRef<HTMLFormElement>();
 
@@ -142,9 +142,10 @@ interface IProp {}
     //   return 0;
     // }
 
+    /*
     private handleOnIdle() {
       window.location.assign("/");
-    }
+    }*/
 
 
     //function tambahan
@@ -398,7 +399,7 @@ render(): React.ReactNode {
     this.bgChoicesPolos.forEach((data, index) => {
       backgroundCarouselContents.push(
         <div key={index} className={Style.carousel_container}>
-          <img alt={`background${index}`} src={data} />
+          <img object-fit={"fill"} alt={`background${index}`} src={data} />
         </div>
       );
     });
@@ -478,7 +479,7 @@ render(): React.ReactNode {
                 />
               </div>
               <div className={Style.camera_view}>
-                  <video width="10" height="20" src="" id="video" autoPlay />
+                  <video width="0" height="0" src="" id="video" autoPlay />
                   <canvas
                     id="canvas"
                     width="0"

@@ -51,24 +51,37 @@
             position: fixed;
     }
 
-    .carousel {
-        height: 65vh;
-        width: 90vw;
-        margin-left: 1cm;
+        .carousel {
+            height: 70vh;
+            width: 90vw;
+            margin-left: 1cm;
+    
+            div:first-of-type {
+                height: 100%;
+    
+                div {
+                    ul {
+                        height: 100%;
 
-
-        div:first-of-type {
-
-            height: 100%;
-        }
-
-        ul {
-            column-gap: 5vw;
-            
+                        li{
+                            div{
+                                img{
+                                    height: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+    
+            ul {
+                column-gap: 5vw;
+            }
         }
     }
+    
 
-}
+
 
 // take a photo 
 .timer_container {
