@@ -1,3 +1,4 @@
+//prep
 import React from "react";
 import emailjs from "@emailjs/browser"
 import Style from '../styles/session.module.scss';
@@ -15,6 +16,8 @@ import bgstar from "../assets/image/star.png"
 import bgwhitepolos from "../assets/image/bgwhitepolos.png";
 import bgproductspolos from "../assets/image/bgproductspolos.png";
 import bgbaru from "../assets/image/bgbaru.png"
+import bgnew from "../assets/image/bgnew.png"
+import bgdark from "../assets/image/dark.png"
  
 
 import IdleTimer from 'react-idle-timer'
@@ -98,7 +101,7 @@ interface IProp {}
 
       this.formRef = React.createRef<HTMLFormElement>();
 
-      this.bgChoicesPolos = [bgbaru, bgstar];
+      this.bgChoicesPolos = [bgbaru, bgstar, bgnew, bgdark];
     }
 
     //email
