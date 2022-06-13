@@ -311,7 +311,7 @@ interface IProp {}
       const canvasBg = new window.Image();
       canvasBg.onload = function () {
         resizedContext?.drawImage(canvasBg, 400, 60, 1080, 980)
-        resizedContext?.drawImage(cameraImg, 685, 240, 520, 620);
+        resizedContext?.drawImage(cameraImg, 485, 140, 920, 820);
         console.log('draw')
       };
       canvasBg.src = background;

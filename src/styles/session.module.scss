@@ -58,14 +58,13 @@
     
             div:first-of-type {
                 height: 100%;
-    
                 div {
                     ul {
                         height: 100%;
-
                         li{
                             div{
-                                img{
+                                border: thick;
+                                img{  
                                     height: 100%;
                                 }
                             }
@@ -141,8 +140,8 @@
         align-items: center;
 
         canvas {
-            width: 40vw;
-            height: 60vh;
+            width: 80vw;
+            height: 80vh;
         }
     }
 }
